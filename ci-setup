@@ -1,0 +1,77 @@
+#!/bin/bash
+
+printf "\n>> (1/9) Copying files to '/var/www/ppl_ta'...\n\n"
+echo "$ROOT_PASS" | sudo -S cp -r * /var/www/ppl_ta
+
+if [[ $? -ne 0 ]]
+then
+	printf "\n\n(!) Copy failed.\n\n"
+	exit 1
+fi
+
+printf "\n>> (2/9) Change working directory to '/var/www/ppl_ta'...\n\n"
+cd /var/www/ppl_ta
+
+printf "\n>> (3/9) Installing composer packages...\n\n"
+sudo composer install
+
+if [[ $? -ne 0 ]]
+then
+	printf "\n\n(!) Composer install failed.\n\n"
+	exit 2
+fi
+
+printf "\n>> (4/9) Installing yarn packages...\n\n"
+echo "$ROOT_PASS" | sudo -S yarn install
+
+if [[ $? -ne 0 ]]
+then
+	printf "\n\n(!) Yarn install failed.\n\n"
+	exit 3
+fi
+
+printf "\n>> (5/9) Copying .env file...\n\n"
+sudo cp /home/ppl/env/.env .
+
+if [[ $? -ne 0 ]]
+then
+	printf "\n\n(!) Copy failed.\n\n"
+	exit 4
+fi
+
+printf "\n>> (6/9) Change permissions...\n\n"
+sudo chown -R ppl:ppl .
+sudo chown www-data:www-data storage/logs/laravel.log
+sudo chown -R www-data:www-data storage/framework/sessions/
+sudo chown -R www-data:www-data storage/framework/views/
+sudo chown -R www-data:www-data storage/app/
+
+if [[ $? -ne 0 ]]
+then
+	printf "\n\n(!) Change folder ownership failed.\n\n"
+	exit 5
+fi
+
+printf "\n>> (7/9) Clear all cache...\n\n"
+php artisan cache:clear
+
+printf "\n>> (8/9) Generating key and cache config...\n\n"
+sudo php artisan key:generate --force
+sudo php artisan config:cache
+
+if [[ $? -ne 0 ]]
+then
+	printf "\n\n(!) Key generation failed.\n\n"
+	exit 6
+fi
+
+printf "\n>> (9/9) Migrating database...\n\n"
+sudo php artisan migrate:fresh --seed --force
+
+if [[ $? -ne 0 ]]
+then
+	printf "\n\n(!) Database migration failed.\n\n"
+	exit 7
+else
+	printf "\n\n(i) Setup completed!\n\n"
+fi

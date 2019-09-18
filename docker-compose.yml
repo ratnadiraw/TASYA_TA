@@ -1,0 +1,39 @@
+version: '2.0'
+services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - app_public:/opt/ppl/public:ro
+    links:
+      - php
+  php:
+    build:
+      context: ./
+      dockerfile: app.dockerfile
+    volumes:
+      - .:/opt/ppl
+      - /opt/ppl/vendor/
+      - app_public:/opt/ppl/public:ro # Public assets to share with Nginx and asset_builder
+      - app_storage:/opt/ppl/storage # Uploads and data storage
+      - app_cache:/opt/ppl/storage # Laravel cache directory
+    ports:
+      - "9000:9000"
+    env_file:
+      - .env.docker
+  asset_builder:
+    build:
+      context: ./
+      dockerfile: asset_builder.dockerfile
+    volumes:
+      - app_public:/opt/ppl/public
+      - ./resources/assets:/opt/ppl/resources/assets:ro
+volumes:
+  app_public:
+    driver: local
+  app_storage:
+    driver: local
+  app_cache:
+    driver: local

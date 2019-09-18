@@ -1,0 +1,16 @@
+#!/bin/bash
+
+printf "\n>> (1/2) Change working directory to '/var/www/ppl_ta'...\n\n"
+cd /var/www/ppl_ta
+
+printf "\n>> (2/2) Building static assets...\n\n"
+echo "$ROOT_PASS" | sudo -S npm run prod
+
+if [[ $? -ne 0 ]]
+then
+	printf "\n\n(!) Building static assets failed.\n\n"
+	exit 1
+else
+	printf "\n\n(i) Asset build.\n"
+	printf "(>) Project deployed!\n\n"
+fi

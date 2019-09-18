@@ -1,0 +1,50 @@
+bimbingan:
+    
+	approved:
+        
+		0: pending
+		1: approved
+		2: rejected
+
+
+ta2_ta:
+    
+	status_kelulusan:
+       
+		 0: on-going
+		 1: lulus
+		 2: tidak lulus
+
+seminar:
+
+    status_pendaftaran:
+
+          0: lolos progress summary check oleh TU
+          1: tanggal telah diberikan oleh dosen
+          2: ruangan telah diberikan oleh TU
+          3: seminar telah selesai
+          4: tidak rekomendasi sidang
+
+sidang:
+
+    status_pendaftaran:
+
+          0: lolos progress summary check oleh TU
+          1: dosen penguji diberi oleh Tim TA
+          2: tanggal telah diberikan oleh dosen
+          3: ruangan telah diberikan oleh TU
+          4: sidang telah selesai
+          5: nilai diberikan oleh tu
+          6: dinyatakan lulus
+          7: dinyatakan tidak lulus
+          100: tidak lulus sidang
+
+
+
+kelas:
+    
+	status_kelas:
+       
+		 0: berjalan
+		 1: selesai
+		

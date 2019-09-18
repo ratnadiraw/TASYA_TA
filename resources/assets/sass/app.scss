@@ -1,0 +1,238 @@
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+//Mobile
+.navbar {
+  &-mahasiswa {
+    background-color: #D8D8D8;
+    padding-left: 8px;
+  }
+  &-title {
+    color: $white;
+    &-ta {
+      color: $white;
+    }
+    &-itb {
+      padding-right: 15px;
+      font-size: 10pt;
+    }
+  }
+  &-brand {
+    padding-left: 15px;
+  }
+  &-itb {
+    background-color: $dark-blue;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    padding: 10px;
+  }
+  &-logo {
+    height: 30px;
+  }
+}
+
+//Desktop
+@media (min-width: 992px) {
+  .navbar {
+    &-mahasiswa {
+      background-color: #D8D8D8;
+    }
+    &-title {
+      color: $white;
+      &-itb {
+        color: $white;
+        font-size: 16pt;
+      }
+    }
+    &-itb {
+      background-color: $dark-blue;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+      padding: 10px;
+    }
+    &-logo {
+      height: 50px;
+    }
+  }
+}
+
+.seminar {
+  &-registered {
+    background-color: #dbfaba;
+    padding: 10px;
+    text-align: center;
+  }
+}
+
+.sidang {
+  &-registered {
+    background-color: #dbfaba;
+    padding: 10px;
+    text-align: center;
+  }
+}
+
+.edit-mom {
+  padding: 20px;
+  input, div {
+    padding: 10px;
+  }
+}
+
+.bimbingan {
+  button {
+    margin: 10px;
+  }
+}
+
+.tu-table-td-form {
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+table.sidebar-table th, table.sidebar-table td {
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.sidebar-card {
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
+}
+
+.berita-acara {
+  &-content {
+    font-size: medium;
+    padding: 20px;
+    &-data {
+      padding: 5px;
+    }
+  }
+}
+
+.btn-margin {
+  margin: 10px;
+}
+
+.radio-button {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.btn-border {
+  border-color: #007bff;
+}
+
+.font-button {
+  font-size: 0.875rem;
+  font-color: blue;
+}
+
+.btn-responsive {
+    white-space: normal !important;
+    word-wrap: break-word;
+}
+
+.center-save {
+  position: relative;
+  width: 30%;
+  left: 35%;
+}
+
+.card {
+	margin-bottom: 40px;
+}
+
+.card-body {
+  overflow-x: auto;
+}
+
+.report-heading {
+  margin-top: 24px;
+}
+.tabel-pemilihan-mahasiswa {
+  margin-bottom:32px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.menu-card {
+  height: 150px;
+  width: 150px;
+  margin: 10px;
+  padding: 15px;
+  &-icon {
+    height: 60px;
+    width: 60px;
+    margin: 5px;
+  }
+}
+
+.scrollable {
+  height: 300px;
+  overflow-y: auto;
+}
+
+.scrollable-x {
+  overflow-x: auto;
+}
+
+
+.add-bimbingan-content {
+  &-field {
+    margin: 10px;
+  }
+}
+
+.overflow-visible {
+  overflow: visible;
+}
+
+
+.content-field {
+  margin: 5px;
+}
+
+.left-gap-8p {
+  margin-left: 8px;
+}
+
+.left-padding {
+  padding-left: 5px;
+}
+
+.bottom-gap-8p {
+  margin-bottom: 8px;
+}
+
+.bottom-gap-12p {
+  margin-bottom: 12px;
+}
+
+.middle-button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  height: 44px;
+}
+
+.padding-left-15 {
+  padding-left: 15px;
+}
+
+//Color
+.bg-white {
+  color: white;
+}
+
+// Import additional SASS files here
+//@import 'welcome';

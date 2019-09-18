@@ -1,0 +1,15 @@
+#!/bin/bash
+
+DIM="\e[2m"
+RESET="\e[22m"
+
+printf "${DIM}Deployment process started.${RESET}\n"
+printf "${DIM}Connecting to production server.${RESET}\n\n"
+ssh ppl@167.205.35.111 -t "cd ppl2; bash -ic ./server_deploy"
+
+if [[ $? -ne 0 ]]
+then
+	printf "\n${DIM}Deployment failed.${RESET}\n"
+else
+	printf "\n${DIM}Deployment succeeded.${RESET}\n"
+fi
